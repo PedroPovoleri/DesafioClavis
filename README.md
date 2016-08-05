@@ -15,7 +15,7 @@ Desafio clavis 2016
 
 A partir dos dados, utilizar a API Chart do Google para gerar um gráfico de pizza de acordo com a classificação: None (0), Low (0.1-3.9), Medium (4.0-6.9), High (7.0-8.9), and Critical (9.0-10.0).
 
-![alt tag](https://googledrive.com/host/0B1qbzErX4WLNa2cySDVqTFQ5Vzg/Captura de Tela 2016-07-29 às 17.11.20.pn)
+![alt tag](https://googledrive.com/host/0B1qbzErX4WLNa2cySDVqTFQ5Vzg/Captura de Tela 2016-07-29 às 17.11.20.png)
 
 E também gerar dois gráficos de barra mostrando os valores de impacto e exploitabilidade para cada uma das CVEs.
 
