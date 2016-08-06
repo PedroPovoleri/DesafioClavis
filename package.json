@@ -1,0 +1,30 @@
+{
+  "name": "clavis-cve",
+  "version": "1.0.0",
+  "description": "Cve finder ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PedroPovoleri/DesafioClavis.git"
+  },
+  "author": "Pedro Povoleri",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.13.4",
+    "mongoose": "^4.4.12",
+    "morgan": "^1.7.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express-fileupload": "0.0.5",
+    "multer": "^1.1.0",
+    "path": "^0.12.7"
+  },
+  "bugs": {
+    "url": "https://github.com/PedroPovoleri/DesafioClavis/issues"
+  },
+  "homepage": "https://github.com/PedroPovoleri/DesafioClavis#readme"
+}
