@@ -6,7 +6,7 @@ Desafio clavis 2016
 A aplicação deverá receber uma lista de CVEs (Common Vulnerabilities and Exposures) e deverá mapear seus respectivos
  CVSS (Common Vulnerability Scoring System) de acordo com o site https://web.nvd.nist.gov/view/vuln/detail?vulnId=*, onde o * corresponde a notação do CVE: prefixo (CVE) + ano + digitos_arbitrários, na qual os digitos arbitrários começam com 4 caracteres. Exemplo: https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2013-5568.
 
-#*Os dados dos CVSS a serem mapeados a partir do site 'web.nvd.nist.gov' são: CVSS Base Score (v2 ou v3) e os valores de impacto e exploitabilidade.
+*Os dados dos CVSS a serem mapeados a partir do site 'web.nvd.nist.gov' são: CVSS Base Score (v2 ou v3) e os valores de impacto e exploitabilidade.
 
 #cvss
 
