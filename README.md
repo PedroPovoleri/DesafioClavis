@@ -25,3 +25,14 @@ tratar de forma diferenciada a versão. Ou seja, gerar dois gráficos de pizza, 
 
 Além das informações anteriores, uma tabela contendo as informações, separadas por CVE também deve ser disponibilizada.
 A solução deve conter instruções de setup e uso, caso necessário.
+
+
+#Instalação
+ Requer:
+  Mongo-db
+  node-js
+ Para instalar basta executar o $npm install na raiz do projeto 
+ e para rodar o aplicativo basta executar $node server/app.js
+ 
+ 
+
