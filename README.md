@@ -20,7 +20,6 @@ E também gerar dois gráficos de barra mostrando os valores de impacto e exploi
 
 ![alt tag](https://googledrive.com/host/0B1qbzErX4WLNa2cySDVqTFQ5Vzg/Captura de Tela 2016-07-29 às 17.23.09.png)
 
-Captura de Tela 2016-07-29 às 17.23.09.png
 Observação: Dependendo da CVE, pode ter as duas classificações CVSS v2 e v3, neste caso
 tratar de forma diferenciada a versão. Ou seja, gerar dois gráficos de pizza, um para versão v2 e outro para versão v3. Isso também se aplica aos gráficos de barra.
 
