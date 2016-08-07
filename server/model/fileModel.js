@@ -4,10 +4,7 @@ var mongoose = require('mongoose')
 
 var fileSchema = new  Schema({
     name:String,
-    dtUpld:{ type: Date, default: Date.now },
-    exploitLvl: Number
-
-
+    dtUpld:{ type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('file', fileSchema);

@@ -3,9 +3,9 @@ var mongoose = require('mongoose')
 
 var CveSchema = new  Schema({
     name:String,
-    impact:Number,
-    exploitLvl: Number,
-    flLst: [{type: mongoose.Schema.Types.ObjectId, ref: 'Cve'}]
+    impact:String,
+    exploitLvl: String,
+    flFrom: [{type: mongoose.Schema.Types.ObjectId, ref: 'file'}]
 });
 
 module.exports = mongoose.model('Cve', CveSchema);
