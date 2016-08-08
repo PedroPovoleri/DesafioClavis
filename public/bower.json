@@ -1,0 +1,23 @@
+{
+  "name": "clavis",
+  "homepage": "https://github.com/PedroPovoleri/DesafioClavis",
+  "authors": [
+    "PedroPovoleri <pedro@povoleri.com>"
+  ],
+  "description": "",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "modernizr": "^3.3.1"
+  }
+}

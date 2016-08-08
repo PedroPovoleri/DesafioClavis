@@ -24,7 +24,7 @@ mongoose.connect('mongodb://127.0.0.1/clavis');
 var router = express.Router();
 
 //Static routers
-app.use('/' , express.static(path.resolve('public')));
+app.use('/' , express.static(path.resolve('../public')));
 
 app.use(fileUpload());
 

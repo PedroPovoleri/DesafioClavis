@@ -1,0 +1,24 @@
+<div ng-controller='HomeCtrl'>
+    <form action="api/home" method="post" enctype="multipart/form-data">
+        <input type="file" multiple="multiple" accept="*/*" name="arq"/><br/>
+        <input type="submit" value="Upload File!"/>
+    </form>
+
+    <div>
+        <ul>
+            <li ng-repeat="file in filesGet">
+                <a ng-click="callCve(file._id)">{{file.name}}</a>
+                <label>{{file.dtUpld}}</label>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+

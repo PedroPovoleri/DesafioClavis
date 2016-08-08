@@ -23,18 +23,17 @@ router.get('/', function(req, res) {
 
 
     if (req.files != null || req.files != undefined) {
+
+
         var nwFl = new fileUp();
-        nwFl.name = req.files.lst.name;
+        nwFl.name = req.files.arq.name;
         nwFl.save();
 
         var outUrl = [];
 
         var host = 'https://web.nvd.nist.gov/view/vuln/detail?vulnId=';
-        var result = req.files.lst.data.toString();
 
-
-
-        var arry = req.files.lst.data.toString().split(';');
+        var arry = req.files.arq.data.toString().split(';');
 
         for(var i= 0; i< arry.length; i++) {
             console.log(arry[i]);
@@ -100,26 +99,12 @@ router.get('/', function(req, res) {
                             console.log("Got an error: ", e);
                         });
                 })}
-
-
-
-
-
-
-
-
-
             }
-
-
-
-
-
-        res.sendStatus(200);
-
-});
+        res.redirect('/');
+    });
 
 module.exports = router;
+
 
 
 
