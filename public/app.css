@@ -31,7 +31,41 @@
 
 .body {
   background-image: url(assets/img/light_grey.png);
-
   background-repeat: repeat;
-
 }
+
+a { cursor: pointer; cursor: hand; }
+
+
+label[for="file-input"]{
+  display: block;
+  margin-bottom: 1em;
+  font-size: 1em;
+  color: #fff;
+  opacity: .9;
+  font-weight: bold;
+}
+
+input[type="file"] {
+
+  cursor: pointer !Important;
+}
+
+::-webkit-file-upload-button {
+   background: #3B4E50;
+   border: 0;
+   padding: 1em 2em;
+   cursor: pointer;
+   color: #fff;
+   border-radius: .2em;
+ }
+
+::-ms-browse {
+   background: #3B4E50;
+   border: 0;
+   padding: 1em 2em;
+   cursor: pointer;
+   color: #fff;
+   border-radius: .2em;
+ }
+

@@ -1,18 +1,24 @@
 <div ng-controller='HomeCtrl'>
     <form action="api/home" method="post" enctype="multipart/form-data">
-        <input type="file" multiple="multiple" accept="*/*" name="arq"/><br/>
-        <input type="submit" value="Upload File!"/>
+        <input type="file" style="color: #3B4E50" multiple="multiple" accept="*/*" name="arq"/><br/>
+        <input type="submit" class="btn-block" value="Upload File!"/>
     </form>
+    <br/>
 
     <div>
         <ul>
             <li ng-repeat="file in filesGet">
-                <a ng-click="callCve(file._id)">{{file.name}}</a>
-                <label>{{file.dtUpld}}</label>
+                <a ng-click="callCve(file._id)" class="btn-link fileName" id="btnCve"><span class="space-right2">{{file.name}}</span></a>
+                <label class="badge">{{file.dtUpld | date:'dd/MM/yyyy'}}</label>
             </li>
         </ul>
     </div>
 
+
+    <hc-pie-chart title="Browser usage" data="callCve">Placeholder for pie chart</hc-pie-chart>
+
+
+   </div>
 </div>
 
 
