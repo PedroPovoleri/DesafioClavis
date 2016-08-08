@@ -22,7 +22,8 @@
     "express-fileupload": "0.0.5",
     "jsdom": "^9.4.1",
     "multer": "^1.1.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "strsplit": "^1.0.0"
   },
   "bugs": {
     "url": "https://github.com/PedroPovoleri/DesafioClavis/issues"
