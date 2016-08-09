@@ -115,7 +115,3 @@ console.log(jsonCve);
     });
 
 module.exports = router;
-
-
-
-

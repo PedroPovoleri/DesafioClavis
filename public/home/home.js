@@ -14,7 +14,4 @@ app.controller('HomeCtrl', ['$http','$scope',function($http,$scope ) {
             return fileJson;
         });
     };
-
-
-
   }]);
