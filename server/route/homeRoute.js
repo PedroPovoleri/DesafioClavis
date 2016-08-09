@@ -70,7 +70,7 @@ router.get('/', function(req, res) {
 
                                     jsonCve = jsonCve.toString().replace(/ /g,'');
                                     jsonCve = jsonCve.toString().replace(/\n/g,'');
-console.log(jsonCve);
+
                                     if(jsonCve.toString().match(/(ExploitabilityScore,\w?[0-9]*\.?[0-9])/g) != null){
                                         nwFl.save();
                                         var nwcve = new cveUp();
@@ -112,6 +112,7 @@ console.log(jsonCve);
         }
     }
 
-    });
+    })
+;
 
 module.exports = router;

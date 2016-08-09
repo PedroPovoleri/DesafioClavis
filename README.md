@@ -31,8 +31,17 @@ A solução deve conter instruções de setup e uso, caso necessário.
  Requer:
   Mongo-db
   node-js
- Para instalar basta executar o $npm install na raiz do projeto 
- e para rodar o aplicativo basta executar $node server/app.js
+ Para instalar basta executar o comand abaixo  na raiz do projeto. 
+    $npm install 
+ e para rodar o aplicativo basta executar com o mongodb em execução 
+    $node server/app.js 
+ o server entrar em listen no host http://localhost:9191/ 
+ basta entrar no host e fazer o upload do arquivo 
+ lembrando que os CVEs devem estar separados por ; 
+  
+ O que não foi implementado. 
+    infelizmente não consegui criar os graficos como solicitado no escopo
+    porem coloquei uma tabela com os dados obtidos da raspagem. 
  
  
 

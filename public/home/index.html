@@ -14,7 +14,26 @@
         </ul>
     </div>
 
-
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Impact</th>
+            <th>Exploit Level</th>
+            <th>CVSS2</th>
+            <th>CVSS base</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="cve in cves" my-element="cve">
+            <td>{{ cve.name }}</td>
+            <td>{{ cve.impact }}</td>
+            <td>{{ cve.exploitLvl }}</td>
+            <td>{{ cve.CVSS2 }}</td>
+            <td>{{ cve.base }}</td>
+        </tr>
+        </tbody>
+    </table>
     <hc-pie-chart title="Browser usage" data="callCve">Placeholder for pie chart</hc-pie-chart>
 
 
