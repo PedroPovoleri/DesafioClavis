@@ -4,6 +4,7 @@ var fileUp = require('../model/fileModel');
 var cveUp = require('../model/cveModel');
 var http = require('https');
 var jsdom = require('jsdom');
+var pth = require('path');
 
 // define the home page route
 router.get('/', function(req, res) {
@@ -24,10 +25,10 @@ router.get('/', function(req, res) {
 
     if (req.files != null || req.files != undefined) {
 
-
-        var nwFl = new fileUp();
-        nwFl.name = req.files.arq.name;
-        nwFl.save();
+        if(pth.extname(req.files.arq.name.toString()) == '.txt'){
+            var nwFl = new fileUp();
+            nwFl.name = req.files.arq.name;
+            nwFl.save();
 
         var outUrl = [];
 
@@ -36,14 +37,10 @@ router.get('/', function(req, res) {
         var arry = req.files.arq.data.toString().split(';');
 
         for(var i= 0; i< arry.length; i++) {
-            console.log(arry[i]);
+
             var url = host + arry[i];
-
             outUrl.push(url);
-
         }
-
-        console.log(outUrl);
 
         for(var i = 0 ; i < outUrl.length ; i++) {
                 http.get(outUrl[i], function(res) {
@@ -53,8 +50,6 @@ router.get('/', function(req, res) {
                     });
 
                     res.on('end', function () {
-                       // console.log(steam);
-
                             jsdom.env({
                                 html: steam,
                                 scripts: ['http://code.jquery.com/jquery-1.6.min.js']
@@ -63,44 +58,54 @@ router.get('/', function(req, res) {
                                     var $ = window.jQuery;
                                     var spans;
 
-                                    $('div:contains("Exploitability Subscore")').each(function () {
+                                    $('.cvss-detail').each(function () {
                                         spans +=  $(this).text();
                                     });
+                                    var cveName = $('h3').text();
 
+                                    if(spans.toString('UTF-8').split(':').length > 0 )
+                                        var jsonCve = spans.toString('UTF-8').split(':');
+                                    else
+                                        res.end();
 
-                                    var jsonCve = spans.toString('UTF-8').split(':');
                                     jsonCve = jsonCve.toString().replace(/ /g,'');
+                                    jsonCve = jsonCve.toString().replace(/\n/g,'');
 
-                                    var obj = {
-                                        name:String,
-                                        lvl:String,
-                                        impact:String
-                                    };
-
-                                    obj.name = jsonCve.toString().match(/CVE-\d{4}-\d{4,7}/g)[0];
-                                    obj.lvl = jsonCve.toString().match(/(ExploitabilitySubscore,\w?[0-9]*\.?[0-9])/g)[0];
-                                    obj.impact = jsonCve.toString().match(/(ImpactSubscore,\w?[0-9]*\.?[0-9])/g)[0];
-
-                                    obj.lvl= obj.lvl.replace('ExploitabilitySubscore,','');
-                                    obj.impact  = obj.impact.replace('ImpactSubscore,','');
-
-
-                                    var nwcve = new cveUp();
-                                    nwcve.name = obj.name;
-                                    nwcve.exploitLvl = obj.lvl;
-                                    nwcve.impact = obj.impact;
-                                    nwcve.flFrom = nwFl._id;
-                                    nwcve.save();
-
-
+                                    if(jsonCve.toString().match(/(ExploitabilityScore,\w?[0-9]*\.?[0-9])/g) != null){
+                                        var nwcve = new cveUp();
+                                        nwcve.name =cveName.match(/CVE-\d{4}-\d{4,7}/g)[0];
+                                        nwcve.exploitLvl = jsonCve.toString().match(/(ExploitabilityScore,\w?[0-9]*\.?[0-9])/g)[0];
+                                        nwcve.exploitLvl = nwcve.exploitLvl.replace('ExploitabilityScore,','');
+                                        nwcve.impact =jsonCve.toString().match(/(ImpactScore,\w?[0-9]*\.?[0-9])/g)[0];
+                                        nwcve.impact = nwcve.impact.replace('ImpactScore,','');
+                                        nwcve.flFrom = nwFl._id;
+                                        nwcve.CVSS2 = false;
+                                        nwcve.save();
+                                    }
+                                    if (jsonCve.toString().match(/(ExploitabilitySubscore,\w?[0-9]*\.?[0-9])/g) != null) {
+                                        var nwcve = new cveUp();
+                                        nwcve.name =cveName.match(/CVE-\d{4}-\d{4,7}/g)[0];;
+                                        nwcve.exploitLvl = jsonCve.toString().match(/(ExploitabilitySubscore,\w?[0-9]*\.?[0-9])/g)[0];
+                                        nwcve.exploitLvl = nwcve.exploitLvl.replace('ExploitabilitySubscore,','');
+                                        nwcve.impact =  jsonCve.toString().match(/(ImpactSubscore,\w?[0-9]*\.?[0-9])/g)[0];
+                                        nwcve.impact = nwcve.impact.replace('ImpactSubscore,','');
+                                        nwcve.flFrom = nwFl._id;
+                                        nwcve.CVSS2 = true;
+                                        nwcve.save();
+                                    }
                                 }});
                         })
                         .on('error', function (e) {
                             console.log("Got an error: ", e);
                         });
                 })}
+            res.redirect('/');
             }
-        res.redirect('/');
+        else{
+            res.sendStatus(500);
+        }
+    }
+
     });
 
 module.exports = router;
