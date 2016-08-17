@@ -32,12 +32,14 @@ router.get('/', function(req, res) {
 
             var host = 'https://web.nvd.nist.gov/view/vuln/detail?vulnId=';
 
-            var arry = req.files.arq.data.toString().split(';');
+            var arry = req.files.arq.data.toString().split(/(?=CVE-\d{4}-\d{4,7})/g) ;
 
-            for(var i= 0; i< arry.length; i++) {
+            var mtch = req.files.arq.data.toString();
+            
 
-                var url = host + arry[i];
-                outUrl.push(url);
+            for(var i= 0; i < arry.length; i++) {
+                    var url = host + arry[i].toString().match(/(CVE-\d{4}-\d{4,7})/g); //arry[i];
+                    outUrl.push(url);
             }
 
             reader(outUrl,nwFl);

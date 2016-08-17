@@ -12,6 +12,7 @@ var cveReader = function reader(outUrl,nwFl) {
             });
 
             res.on('end', function () {
+                    console.log('res end: '+ i);
                     jsDom(outUrl,nwFl,steam)
                 })
                 .on('error', function (e) {

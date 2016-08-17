@@ -20,7 +20,7 @@ var jsDom = function DomReader(outUrl,nwFl, steam) {
             if(spans != undefined)
                 var jsonCve = spans.toString('UTF-8').split(':');
             else
-                return res.end();
+                return spans;
 
             jsonCve = jsonCve.toString().replace(/ /g,'');
             jsonCve = jsonCve.toString().replace(/\n/g,'');
