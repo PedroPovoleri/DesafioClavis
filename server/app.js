@@ -10,7 +10,7 @@ var app = express();
 
 //router load
 var home = require('./route/homeRoute');
-
+var scarpy = require('./route/scarpyRoute');
 //Morgan
 app.use(morgan('dev'));
 
@@ -30,5 +30,6 @@ app.use(fileUpload());
 
 //Model routers
 app.use('/api/home', home);
+app.use('/api/scarpy', scarpy);
 
 app.listen(9191);

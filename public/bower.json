@@ -18,6 +18,7 @@
     "angular": "^1.5.8",
     "angular-route": "^1.5.8",
     "bootstrap": "^3.3.7",
-    "modernizr": "^3.3.1"
+    "modernizr": "^3.3.1",
+    "angular-chart": "^0.5.0"
   }
 }

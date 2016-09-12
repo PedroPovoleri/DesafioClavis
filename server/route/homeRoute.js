@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var reader = require('../utils/cveReader')
+var reader = require('../utils/cveReader');
 var fileUp = require('../model/fileModel');
 var pth = require('path');
 var cveUp = require('../model/cveModel');
@@ -20,38 +20,21 @@ router.get('/', function(req, res) {
         }
     });
 }).post('/', function(req,res){
-
-
     if (req.files != null || req.files != undefined) {
-
-        if(pth.extname(req.files.arq.name.toString()) == '.txt'){
             var nwFl = new fileUp();
             nwFl.name = req.files.arq.name;
-
             var outUrl = [];
-
             var host = 'https://web.nvd.nist.gov/view/vuln/detail?vulnId=';
-
             var arry = req.files.arq.data.toString().split(/(?=CVE-\d{4}-\d{4,7})/g) ;
 
-            var mtch = req.files.arq.data.toString();
-            
-
             for(var i= 0; i < arry.length; i++) {
-                    var url = host + arry[i].toString().match(/(CVE-\d{4}-\d{4,7})/g); //arry[i];
+                    var url = host + arry[i].toString().match(/(CVE-\d{4}-\d{4,7})/g);
                     outUrl.push(url);
             }
-
             reader(outUrl,nwFl);
-
             res.redirect('/');
-            }
-        else{
-            res.redirect('https://http.cat/500');
-        }
+
     }
-
-    })
-;
-
+    res.redirect('https://http.cat/500');
+});
 module.exports = router;
